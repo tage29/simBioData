@@ -1,0 +1,28 @@
+Package: simBioData
+Type: Package
+Title: Simulation of Biological and Ecological Data
+Version: 0.1.0
+Authors@R: c(
+    person(
+      "Tage", "Olsen",
+      email = "taols9096@uib.no",
+      role = c("aut", "cre")
+    )
+  )
+Description: This package provides a small selection of flexible simulation functions for generating biologically realistic datasets commonly used in ecology and evolutionairy biology.
+  It supports a wide range of different datatypes, including count, binomial, longitudinal, phylogenetic, spatial, multi variate and zero-inflated data, making the package useful for power analysis, method development and teaching.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    stats,
+    MASS
+Suggests:
+    testthat (>= 3.0.0),
+    ape,
+    phytools,
+    knitr,
+    rmarkdown
+Config/testthat/edition: 3
+URL: https://github.com/tage29/creator
+BugReports: https://github.com/tage29/creator/issues

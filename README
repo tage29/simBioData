@@ -1,0 +1,58 @@
+This package is deisgned to help users simulate realistic datasets that reflect comm structures encountered in biological research.
+Each function targets a specific class of data and allows for control over fixed effects, random effects and distributional assumptions.
+The functions are intentionally modular and parameter driven to make them suitable for power analyses, simulation based inference, and for testing statistical workflows.
+
+Most functions share some common design principles.
+These being an explicit control over fixed effects, flexible random effect structures, reproducibility via a seed argument, and the option to return either a single dataset or a list of simulated datasets.
+
+Function Overview and their usage:
+
+simulate_seed_data_nb().
+
+This function simulates seed production data along an elevational gradient using a negative binomial distribution.
+Its key features are an elevation gradient with species-specific responses, a treatment effect (hand vs. naturally pollinated plants), species and site level random effects, and a overdispersed count data via negative binomial.
+This function is more specific for what I would like to for my masters thesis, and so it is not as versatile as the others included in this package.
+This function is particularily useful for testing GLMMs for count data, doing power analyses for ecological field studies, and exploring treatment x environment relationships.
+
+simulate_binomial_data().
+
+This function generates a binomial (survival or succes/failure) data with optional grouping and environmental gradients.
+Its key features are logit-scale effects, individual-level or aaggregated binomial data, species and group random effects, and a flexible treatment structure.
+This function is particularily useful for survival analysis simulations, logistic regression / GLMM testing, and for comparing individual vs. aggregated binomial models.
+
+simulate_longitudinal_data().
+
+This function is for simulating repeated-measures (longitudinal) data with individual travel trajectories over time.
+Its key features are random intercepts and slopes per individual, an optional correlation between intercepts and slopes, treatment and time interaction effects, and group level structure.
+This function is useful for mixed-effects model development, growth curve analysis, and repeated-measure experimental design.
+
+simulate_phylo_traits().
+
+This function simulated trait evolution along a phylogenetic tree under Brownian Motion (BM)or Ornstein-Uhlenbeck(OU) models.
+Its key features are allowing for automatic or user supplied phylogenies, allowing for multiple traits, BM or OU proccesess, and an optional measurement error.
+This function is useful when using comprative methods, hen doing phylogenetic signal testing, and for trait evolution modeling.
+
+simulate_community_matrix().
+
+This function generates species by site community matrices alond an environmental gradient.
+Its key features are Gaussian niche response curves, species-specific optima and abundances, poisson or negative binomial distributions, and an option to toggle zero inflation.
+This function is useful for community ecology analyses, Ordination and diversity metrics, and for testing species distribution models.
+
+simulate_multivariate_traits().
+
+This function simulate multivariate trait datasets with covariance structure.
+Its key features is having multiple covariated traits, custom covariance or correlation matrices, environmental and treatment effects, and a optional group-level random effect.
+This function is useful for multivariate analysis like PCA and MANOVA, for trait correlation studies, and for testing of covariance estimation methods.
+
+simulate_spatial_data().
+
+This function simulates spatially autocorrelated data using a Gaussian random field.
+Its key features are using spatial coordinates (generated or supplied), its distance based covariance structure, environmental gradients, and control of spatial autocorrelation.
+This function is useful for testing autocorrelation handling, when doing spatial statistics, and for geostatistical modeling.
+
+
+simulate_zero_inflated_data().
+
+This function simulates zero-inflated count data with seperate processes for counts and excess zeroes.
+Its key features are a dual process model (count + zero inflation), poisson or negative binomial counts, covariates affecting both processes, and an optional group level random effect.
+This function is useful for zero inflated or hurdle models, for ecological count data with excess zeroes, and for model comparison and diagnostics.
