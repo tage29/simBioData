@@ -1,3 +1,31 @@
+#' Simulate multivariate trait data
+#'
+#' Generates multivariate normally distributed traits with optional
+#' environmental, treatment, and group-level effects, and a user-defined
+#' covariance structure.
+#'
+#' @param n_obs Number of observations.
+#' @param n_traits Number of traits.
+#' @param trait_names Optional trait names.
+#' @param intercepts Trait-specific intercepts.
+#' @param env_effects Environmental effects per trait.
+#' @param treatment_effects Treatment effects per trait.
+#' @param env Environmental predictor values.
+#' @param treatment Treatment labels.
+#' @param cov_matrix Covariance matrix.
+#' @param sd_traits Trait standard deviations.
+#' @param cor_matrix Correlation matrix.
+#' @param n_groups Number of groups.
+#' @param sd_group SD of group-level effects.
+#' @param return_cov Logical; return covariance matrix.
+#' @param seed Optional random seed.
+#'
+#' @return A data frame or list containing simulated traits.
+#' @export
+#'
+#' @examples
+#' dat <- simulate_multivariate_traits(seed = 1)
+
 
 # Function for simulating multivariate traits
 simulate_multivariate_traits <- function(

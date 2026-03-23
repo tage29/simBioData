@@ -1,3 +1,32 @@
+#' Simulate longitudinal (repeated-measures) data
+#'
+#' Generates repeated measurements for individuals over time, including
+#' random intercepts and slopes, treatment effects, and optional group-level
+#' structure.
+#'
+#' @param n_individuals Number of individuals.
+#' @param n_timepoints Number of time points per individual.
+#' @param time_values Numeric vector of time values.
+#' @param n_groups Number of groups (e.g. sites).
+#' @param intercept Baseline intercept.
+#' @param time_slope Effect of time.
+#' @param treatment_effect Treatment main effect.
+#' @param time_treatment_interaction Interaction between time and treatment.
+#' @param treatment_labels Treatment group labels.
+#' @param sd_individual_intercept SD of individual random intercepts.
+#' @param sd_individual_slope SD of individual random slopes.
+#' @param cor_intercept_slope Correlation between intercepts and slopes.
+#' @param sd_group_intercept SD of group-level intercepts.
+#' @param sd_residual Residual error standard deviation.
+#' @param return_list Logical; return a list instead of a data frame.
+#' @param seed Optional random seed.
+#'
+#' @return A data frame (or list) of longitudinal observations.
+#' @export
+#'
+#' @examples
+#' dat <- simulate_longitudinal_data(seed = 1)
+
 
 # Function for simulating longitude associated datasets
 simulate_longitudinal_data <- function(

@@ -1,3 +1,31 @@
+#' Simulate spatially autocorrelated data
+#'
+#' Generates spatial data with autocorrelation based on an exponential
+#' covariance function, including environmental and treatment effects.
+#'
+#' @param n_points Number of spatial locations.
+#' @param x_range Range of x coordinates.
+#' @param y_range Range of y coordinates.
+#' @param coords Optional matrix of coordinates.
+#' @param intercept Baseline intercept.
+#' @param env_effect Effect of environmental covariate.
+#' @param treatment_effect Treatment effect.
+#' @param env Optional environmental variable.
+#' @param treatment Treatment labels.
+#' @param spatial_sd Standard deviation of spatial effect.
+#' @param spatial_range Range parameter controlling spatial decay.
+#' @param sd_residual Residual standard deviation.
+#' @param n_groups Number of groups.
+#' @param sd_group SD of group-level effects.
+#' @param return_components Logical; return spatial components.
+#' @param seed Optional random seed.
+#'
+#' @return A data frame or list with spatial data and components.
+#' @export
+#'
+#' @examples
+#' dat <- simulate_spatial_data(seed = 1)
+
 
 # Function that simulates spatial data
 simulate_spatial_data <- function(

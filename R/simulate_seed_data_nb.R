@@ -1,3 +1,29 @@
+#' Simulate seed production along an elevation gradient (negative binomial)
+#'
+#' Generates overdispersed count data representing seed production across an
+#' elevation gradient, with species- and site-level random effects and an
+#' optional treatment effect (e.g. hand vs natural pollination).
+#'
+#' @param elevation_seq Numeric vector of elevation values.
+#' @param n_per_type Number of observations per treatment per species and elevation.
+#' @param species Character vector of species names.
+#' @param intercept_log Baseline intercept on the log scale.
+#' @param elevation_slope Effect of elevation on the log scale.
+#' @param treatment_effect Treatment effect (log scale).
+#' @param reference_elevation Reference value for centering elevation.
+#' @param sd_species_intercept Standard deviation of species random intercepts.
+#' @param sd_species_slope Standard deviation of species-specific slopes.
+#' @param sd_site_intercept Standard deviation of site-level random intercepts.
+#' @param size Dispersion parameter for the negative binomial distribution.
+#' @param return_list Logical; return a list instead of a single data frame.
+#' @param seed Optional random seed for reproducibility.
+#'
+#' @return A data frame or list of data frames containing simulated seed counts.
+#' @export
+#'
+#' @examples
+#' dat <- simulate_seed_data_nb(seed = 1)
+
 
 # Function for simulating seed data along an elevation gradient.
 simulate_seed_data_nb <- function(

@@ -1,3 +1,29 @@
+#' Simulate binomial (success/failure) data
+#'
+#' Generates binomial data representing outcomes such as survival or success,
+#' including treatment effects, environmental gradients, and random effects
+#' at species and group levels.
+#'
+#' @param n_groups Number of groups (e.g. sites).
+#' @param n_per_group Number of observations or trials per group.
+#' @param species Character vector of species names.
+#' @param intercept_logit Baseline intercept on the logit scale.
+#' @param treatment_effect Treatment effect on the logit scale.
+#' @param env_slope Effect of environmental predictor.
+#' @param env_values Numeric vector of environmental values.
+#' @param sd_species_intercept Standard deviation of species intercepts.
+#' @param sd_species_slope Standard deviation of species slopes.
+#' @param sd_group_intercept Standard deviation of group intercepts.
+#' @param treatment_labels Labels for treatment levels.
+#' @param aggregated Logical; return aggregated binomial counts if TRUE.
+#' @param return_list Logical; return a list instead of a data frame.
+#' @param seed Optional random seed.
+#'
+#' @return A data frame (or list) of simulated binomial data.
+#' @export
+#'
+#' @examples
+#' dat <- simulate_binomial_data(seed = 1)
 
 
 # Function for simulating binomial survival data

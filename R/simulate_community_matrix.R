@@ -1,3 +1,27 @@
+#' Simulate a community matrix along an environmental gradient
+#'
+#' Generates species-by-site abundance data based on Gaussian niche responses
+#' along an environmental gradient, with optional zero inflation.
+#'
+#' @param n_sites Number of sites.
+#' @param n_species Number of species.
+#' @param env_values Environmental gradient values.
+#' @param niche_optima Species-specific niche optima.
+#' @param niche_breadth Width of species niche response.
+#' @param max_abundance Maximum expected abundance.
+#' @param sd_species_intercept SD of species-specific abundance variation.
+#' @param family Distribution ("poisson" or "nbinom").
+#' @param size Dispersion parameter for negative binomial.
+#' @param zero_inflation Probability of extra zeros.
+#' @param return_long Logical; return long-format data.
+#' @param seed Optional random seed.
+#'
+#' @return A matrix or data frame of community data.
+#' @export
+#'
+#' @examples
+#' mat <- simulate_community_matrix(seed = 1)
+
 
 # A function for simulating community matrixes
 simulate_community_matrix <- function(

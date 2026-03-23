@@ -1,3 +1,32 @@
+#' Simulate zero-inflated count data
+#'
+#' Generates count data with excess zeros using a two-part model:
+#' a count process (Poisson or negative binomial) and a zero-inflation process.
+#'
+#' @param n Number of observations.
+#' @param env Environmental predictor.
+#' @param treatment Treatment labels.
+#' @param count_intercept Intercept for count model (log scale).
+#' @param env_effect_count Environmental effect on count model.
+#' @param treatment_effect_count Treatment effect on count model.
+#' @param zi_intercept Intercept for zero-inflation model (logit scale).
+#' @param env_effect_zi Environmental effect on zero inflation.
+#' @param treatment_effect_zi Treatment effect on zero inflation.
+#' @param family Distribution ("poisson" or "nbinom").
+#' @param size Dispersion parameter for negative binomial.
+#' @param n_groups Number of groups.
+#' @param sd_group_count SD of group effects (count model).
+#' @param sd_group_zi SD of group effects (zero-inflation model).
+#' @param sd_env SD of environmental variation.
+#' @param return_components Logical; return model components.
+#' @param seed Optional random seed.
+#'
+#' @return A data frame or list containing simulated zero-inflated data.
+#' @export
+#'
+#' @examples
+#' dat <- simulate_zero_inflated_data(seed = 1)
+
 
 # Function for simulating datasets with zero-inflated data
 simulate_zero_inflated_data <- function(

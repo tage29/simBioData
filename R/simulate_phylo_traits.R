@@ -1,3 +1,26 @@
+#' Simulate phylogenetic trait data
+#'
+#' Simulates continuous trait evolution along a phylogenetic tree under
+#' Brownian motion (BM) or Ornstein-Uhlenbeck (OU) models.
+#'
+#' @param n_species Number of species.
+#' @param tree Optional phylogenetic tree.
+#' @param model Evolutionary model ("BM" or "OU").
+#' @param sigma2 Rate parameter for Brownian motion.
+#' @param alpha Strength of attraction (OU model).
+#' @param theta Trait optimum (OU model).
+#' @param n_traits Number of traits to simulate.
+#' @param trait_names Optional vector of trait names.
+#' @param sd_error Standard deviation of measurement error.
+#' @param tree_method Method for simulating tree ("pbtree" or "rtree").
+#' @param return_tree Logical; return tree along with data.
+#' @param seed Optional random seed.
+#'
+#' @return A data frame or a list containing trait data and a phylogenetic tree.
+#' @export
+#'
+#' @examples
+#' sim <- simulate_phylo_traits(seed = 1)
 
 
 # Function for generating phylogenetic trait data.
