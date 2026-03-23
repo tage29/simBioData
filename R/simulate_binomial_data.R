@@ -26,30 +26,24 @@
 #' dat <- simulate_binomial_data(seed = 1)
 
 
-# Function for simulating binomial survival data
 simulate_binomial_data <- function(
-    n_groups = 10,                 # e.g. sites
-    n_per_group = 50,              # individuals OR trials per group
+    n_groups = 10,
+    n_per_group = 50,
     species = c("sp1", "sp2"),
 
-    # Fixed effects (logit scale)
-    intercept_logit = qlogis(0.6),   # baseline survival probability
-    treatment_effect = qlogis(0.7) - qlogis(0.6),  # effect of treatment
-    env_slope = 0,                  # continuous predictor effect
+    intercept_logit = stats::qlogis(0.6),
+    treatment_effect = stats::qlogis(0.7) - stats::qlogis(0.6),
+    env_slope = 0,
 
-    # Optional environmental gradient
     env_values = seq_len(n_groups),
 
-    # Random effects (SDs on logit scale)
     sd_species_intercept = 0.5,
     sd_species_slope = 0.2,
     sd_group_intercept = 0.5,
 
-    # Structure
     treatment_labels = c("control", "treatment"),
-    aggregated = FALSE,   # TRUE = binomial counts, FALSE = individual rows
+    aggregated = FALSE,
 
-    # Output
     return_list = FALSE,
     seed = NULL
 ) {
@@ -59,7 +53,6 @@ simulate_binomial_data <- function(
   datalist <- list()
   counter <- 1
 
-  # Species random effects
   species_intercepts <- stats::rnorm(length(species), 0, sd_species_intercept)
   species_slopes <- stats::rnorm(length(species), 0, sd_species_slope)
   names(species_intercepts) <- species
@@ -71,10 +64,8 @@ simulate_binomial_data <- function(
     env_val <- env_values[g]
 
     for (sp in species) {
-
       for (trt in treatment_labels) {
 
-        # Linear predictor
         eta <- intercept_logit +
           env_slope * env_val +
           species_intercepts[sp] +
@@ -89,7 +80,6 @@ simulate_binomial_data <- function(
 
         if (aggregated) {
 
-          # Binomial counts
           successes <- stats::rbinom(1, size = n_per_group, prob = p)
 
           datalist[[counter]] <- data.frame(
@@ -106,7 +96,6 @@ simulate_binomial_data <- function(
 
         } else {
 
-          # Individual-level data
           outcome <- stats::rbinom(n_per_group, size = 1, prob = p)
 
           datalist[[counter]] <- data.frame(

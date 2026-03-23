@@ -33,8 +33,8 @@ simulate_seed_data_nb <- function(
 
     # Fixed effects (on log scale)
     intercept_log = log(100),
-    elevation_slope = -0.001,   # effect per unit elevation
-    treatment_effect = log(0.95), # hand vs natural (multiplicative)
+    elevation_slope = -0.001,
+    treatment_effect = log(0.95),
     reference_elevation = 1100,
 
     # Random effects (SDs on log scale)
@@ -42,10 +42,9 @@ simulate_seed_data_nb <- function(
     sd_species_slope = 0.0005,
     sd_site_intercept = 0.15,
 
-    # Dispersion (negative binomial: smaller = more variance)
+    # Dispersion
     size = 10,
 
-    # Output control
     return_list = FALSE,
     seed = NULL
 ) {
@@ -55,7 +54,6 @@ simulate_seed_data_nb <- function(
   datalist <- list()
   counter <- 1
 
-  # Species random effects
   species_intercepts <- stats::rnorm(length(species), 0, sd_species_intercept)
   species_slopes <- stats::rnorm(length(species), 0, sd_species_slope)
   names(species_intercepts) <- species
@@ -63,14 +61,12 @@ simulate_seed_data_nb <- function(
 
   for (elev in elevation_seq) {
 
-    # Site random intercept
     site_intercept <- stats::rnorm(1, 0, sd_site_intercept)
 
     for (sp in species) {
 
       elev_centered <- elev - reference_elevation
 
-      # Linear predictors (log scale)
       eta_natural <- intercept_log +
         (elevation_slope + species_slopes[sp]) * elev_centered +
         species_intercepts[sp] +
@@ -78,11 +74,9 @@ simulate_seed_data_nb <- function(
 
       eta_hand <- eta_natural + treatment_effect
 
-      # Convert to means
       mu_natural <- exp(eta_natural)
       mu_hand <- exp(eta_hand)
 
-      # Simulate counts
       seed_natural <- stats::rnbinom(n_per_type, mu = mu_natural, size = size)
       seed_hand <- stats::rnbinom(n_per_type, mu = mu_hand, size = size)
 
