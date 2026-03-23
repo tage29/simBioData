@@ -23,8 +23,6 @@
 #'
 #' @examples
 #' dat <- simulate_seed_data_nb(seed = 1)
-#' @importFrom stats rnorm runif plogis qlogis rpois rnbinom rbinom
-NULL
 
 # Function for simulating seed data along an elevation gradient.
 simulate_seed_data_nb <- function(
